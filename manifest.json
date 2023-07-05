@@ -1,0 +1,14 @@
+{
+    "manifest_version" : 3,
+    "name" : "낚시성 기사 탐지",
+    "description" : "ai hub의 낚시성 기사 데이터를 이용하여 1. 제목과 본문의 불일치, 2. 본문의 일관성 부족을 탐지함",
+    "version" : "0.1",
+    "content_scripts": [
+        {
+          "matches": ["https://news.naver.com/*",
+                      "https://media.naver.com/*"],
+          "js": ["/js/scrapping.js"],
+          "css" : ["/css/index.css"]
+        }
+    ]
+}

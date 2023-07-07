@@ -8,7 +8,7 @@ for (i = 0; i < list.length; i++) {
     var href = list[i].getAttribute("href");
     if(href != null){
         if(href.includes("https://n.news.naver.com")){
-            
+            href_list.push(href)
         }
     }
 }
@@ -22,9 +22,9 @@ function getCookie(name) {
   }
 }
 
+href_list = ['https://n.news.naver.com/article/052/0001905771?cds=news_media_pc','https://n.news.naver.com/article/052/0001905725?cds=news_media_pc']
 
-
-fetch('http://127.0.0.1:8000/api/getTitleContentUsingByHref/', {
+fetch('https://happycorder.store:8080/api/getTitleContentUsingByHref/', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -43,8 +43,6 @@ fetch('http://127.0.0.1:8000/api/getTitleContentUsingByHref/', {
   })
   .then((data) => {
     console.log(data);  // 받은 응답 데이터 처리
-    // API 응답 데이터를 처리합니다.
-    console.log(data);
     // url 꺼내와서 
     for (i = 0; i < list.length; i++) {
         
@@ -55,7 +53,11 @@ fetch('http://127.0.0.1:8000/api/getTitleContentUsingByHref/', {
 
                 var span = document.createElement("span");
                 span.classList = ["tooltiptext"];
-                span.innerHTML = "제목과 컨텐츠 불일치 :  "+"<br>"+ "본문의 일관성 부족 :  " ;
+                span.innerHTML = "제목과 컨텐츠 불일치 :  "
+                                  + data.sebu1_result
+                                  +"<br>"
+                                  + "본문의 일관성 부족 :  " 
+                                  + data.sebu2_result;
             
                 var targetRect = list[i].getBoundingClientRect();
                 list[i].prepend(span);

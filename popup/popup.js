@@ -54,9 +54,9 @@ chrome.windows.getCurrent(function(win) {
                                 sebu2 = Math.round(parseFloat(data.sebu2_result[0]) * 100).toString()  + "%";
                             }
 
-                            document.getElementById("gwango").innerText = "광고성 : " + gwango;
-                            document.getElementById("1sebu").innerText = "낚시성 : " + sebu1;
-                            document.getElementById("2sebu").innerText = "일관성 부족도 : " + sebu2;
+                            document.getElementById("gwango").innerText = "1) 광고성: : " + gwango;
+                            document.getElementById("1sebu").innerText = "2) 낚시성 : " + sebu1;
+                            document.getElementById("2sebu").innerText = "3) 본문 일관성 부족 : " + sebu2;
 
                         })
                         .catch((error) => {

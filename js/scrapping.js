@@ -195,7 +195,7 @@ function toApiServer(href_list, elementList){
                                           +"낚시성 :  "
                                           + sebu1
                                           +"<br>"
-                                          + "일관성 부족도 :  " 
+                                          + "본문 일관성 부족 :  " 
                                           + sebu2;
                     
                         var targetRect = elementList[i].getBoundingClientRect();

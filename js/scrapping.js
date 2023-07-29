@@ -1,12 +1,56 @@
-SERVER_HOST = "https://happycorder.store:8080"
+const SERVER_HOST = "https://happycorder.store:8080";
 // const SERVER_HOST = "http://127.0.0.1:8000";
 // const valid_url = ["https://n.news.naver.com"];
-const valid_url = ["n"];
+const valid_url = ["https://n.news.naver.com"];
 
 // 초반 실행
 const href_list = Array.from(refresh()[0]);  
 const elementList = refresh()[1];  
-toApiServer(href_list, elementList);
+
+// 실제 테스트 데이터 분할
+if(window.location.href.includes('naver.com')){
+  fetch(SERVER_HOST + '/api/getTitleContentUsingByHref/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': getCookie('csrftoken')  // CSRF 토큰을 요청 헤더에 포함합니다.
+    },
+    body: JSON.stringify({ 
+      "href" : href_list
+    })
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('API 요청이 실패했습니다.');
+      }
+    })
+    .then((data) => {
+      // 현재 시간을 가져오는 Date 객체 생성
+      const now = new Date();
+
+      // 시간 정보를 콘솔에 출력
+      console.log("끝",now);
+
+      console.log(data);  // 받은 응답 데이터 처리
+      toApiServer(href_list, elementList);
+                     
+          
+
+     })
+    .catch((error) => {
+      console.error(error);
+    });
+}else{
+  toApiServer(href_list, elementList);
+
+  function handleRefreshClick(event) {
+    var href_list = Array.from(refresh()[0]);  
+    var elementList = refresh()[1];  
+    toApiServer(href_list, elementList);
+  }
+}
 
 // 이벤트 실행
 const refreshButtons = document.getElementsByClassName("_refresh_btn");
@@ -66,12 +110,6 @@ if(targetElementpaging != null){
 //////////////
 //함수정의////
 //////////////
-
-function handleRefreshClick(event) {
-  var href_list = Array.from(refresh()[0]);  
-  var elementList = refresh()[1];  
-  toApiServer(href_list, elementList);
-}
 
 function refresh(){
 

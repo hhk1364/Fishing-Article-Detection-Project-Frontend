@@ -1,14 +1,33 @@
 {
     "manifest_version" : 3,
-    "name" : "낚시성 기사 탐지",
-    "description" : "ai hub의 낚시성 기사 데이터를 이용하여 1. 제목과 본문의 불일치, 2. 본문의 일관성 부족을 탐지함",
+    "name" : "월척뉴스",
+    "description" : "스마트한 뉴스 탐지 서비스 ‘월척뉴스’🚢 마우스를 hovering 하면서고품질 뉴스 기사를 찾아보세요🔍",
     "version" : "0.1",
+    "action": {
+      "default_popup": "/popup/popup.html",
+      "default_icon": {
+        "16": "/images/icon16.png",
+        "32": "/images/icon32.png",
+        "48": "/images/icon48.png",
+        "128": "/images/icon128.png"
+      }
+    },
+    "icons": {
+        "16": "/images/icon16.png",
+        "32": "/images/icon32.png",
+        "48": "/images/icon48.png",
+        "128": "/images/icon128.png"
+    },
     "content_scripts": [
         {
-          "matches": ["https://news.naver.com/*",
-                      "https://media.naver.com/*"],
+          "matches": ["<all_urls>"],
           "js": ["/js/scrapping.js"],
           "css" : ["/css/index.css"]
         }
+    ],
+    "permissions" : [
+      "activeTab",
+      "tabs",
+      "windows"
     ]
 }

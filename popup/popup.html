@@ -1,0 +1,47 @@
+<html style="width: 210px;">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="/css/index.css">
+    </head>
+    <body>
+        <div id="body">
+            <h4>현재 기사는</h4>
+            <span id="gwango" style="width:200px;display: inline-block;"></span>
+            <div style="width:200px;display: inline-block;">
+                결과에 대해
+                <input type="radio" name="gwango_like" id="like" value="1"/><label for="like">좋아요</label>
+                <input type="radio" name="gwango_like" id="like" value="2"/><label for="like">싫어요</label>
+            </div>
+            <span id="1sebu" style="display: inline-block;"></span>
+            <div style="width:200px;display: inline-block;">
+                결과에 대해
+                <input type="radio" name="1sebu_like" id="like" value="1"/><label for="like">좋아요</label>
+                <input type="radio" name="1sebu_like" id="like" value="2"/><label for="like">싫어요</label>
+            </div>
+            <span id="2sebu" style="display: inline-block;"></span>
+            <div style="width:200px;display: inline-block;">
+                결과에 대해
+                <input type="radio" name="2sebu_like" id="like" value="1"/><label for="like">좋아요</label>
+                <input type="radio" name="2sebu_like" id="like" value="2"/><label for="like">싫어요</label>
+            </div> 
+            <button type="button" id="thumbsjechul">
+                제출
+            </button>
+            <h4>현재 페이지를 신고하시겠습니까?</h4>
+            <label style="display: inline-block;">
+                <input type="checkbox" name="singo" value="1">광고
+            </label>
+            <label style="display: inline-block;">
+                <input type="checkbox" name="singo" value="2">낚시성 기사
+            </label>
+            <label style="display: inline-block;">
+                <input type="checkbox" name="singo" value="3">기사 본문의 일관성 부족
+            </label>
+            <button type="button" id="singojechul">
+                제출
+            </button>
+        </div>
+        <script src="/popup/popup.js"></script>
+    </body>
+</html>
